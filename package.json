@@ -1,0 +1,93 @@
+{
+  "name": "codesage",
+  "displayName": "CodeSage",
+  "description": "AI-powered coding assistant",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:codesage.start",
+    "onView:codesageSidebar"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codesage.start",
+        "title": "Start CodeSage"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codesage-sidebar",
+          "title": "CodeSage",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "views": {
+      "codesage-sidebar": [
+        {
+          "id": "codesageView",
+          "name": "CodeSage"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "codesageView",
+        "contents": "Welcome to CodeSage!\n[Start Chat](command:codesage.start)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p ./",
+    "watch-tests": "tsc -watch -p ./",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@vscode/webview-ui-toolkit": "^1.2.0",
+    "axios": "^0.27.2",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.7",
+    "socket.io": "^4.5.1",
+    "ws": "^8.8.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.60.0",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.2",
+    "mocha": "^10.0.0",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/vscode-ai-assistant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/vscode-ai-assistant/issues"
+  },
+  "homepage": "https://github.com/yourusername/vscode-ai-assistant#readme",
+  "publisher": "ama-developer"
+}
